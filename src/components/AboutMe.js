@@ -5,7 +5,7 @@ import React from 'react';
 import img4 from "../assets/img/about-me/nature.jpeg";
 import img2 from "../assets/img/about-me/sky.jpeg";
 import img3 from "../assets/img/about-me/drink.jpeg";
-import img1 from "../assets/img/about-me/city.jpeg";
+import img1 from "../assets/img/about-me/city.JPEG";
 import img5 from "../assets/img/about-me/seaside.jpeg";
 
 export const AboutMe = () => {

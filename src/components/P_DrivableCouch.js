@@ -1,16 +1,21 @@
 import React from 'react';
-import { ProjectExpansionBase } from './ProjectExpansionBase';
+import { ProjectExpansionBase, LinkStyle } from './ProjectExpansionBase';
 import couchSkel from "../assets/img/couch/couch_skel.jpeg";
 import couchStill from "../assets/img/couch/couch_still.jpeg";
 
 export const DrivableCouch = ({ arrowPosition = 50 }) => {
   const badges = [
-    { text: "ESP32", variant: "primary" },
-    { text: "Brushless Motors", variant: "primary" },
-    { text: "FlipSky ESC", variant: "primary" },
+    
+    { text: "Electric Vehicle", variant: "primary" },
+    { text: "EV Power Management Systems", variant: "primary" },
     { text: "PID Control", variant: "primary" },
+    { text: "C", variant: "primary" },
+    { text: "C++", variant: "primary" },
     { text: "Regenerative Braking", variant: "primary" },
-    { text: "Wiimote Controller", variant: "primary" }
+    { text: "Manufacturing", variant: "primary" },
+    { text: "Content Creation", variant: "primary" },
+    { text: "Project Management", variant: "primary" }
+
   ];
 
   const paragraphs = [
@@ -18,13 +23,13 @@ export const DrivableCouch = ({ arrowPosition = 50 }) => {
     
     "The control system for the speeds of the motors was a big challenge. The two ESCs had to operate independently without communication with one another, since the serial port was occupied by the ESP32 itself. Additionally, our steering system relied on simple speed modulation instead of a physical steering column, so speed matching between the two motors was important to ensure it can drive straight. As a workaround, I developed and tuned a custom PID control algorithm running on the ESP32 to maintain speed matching between motors and provide auto-straightening functionality, preventing the vehicle from veering during operation. Additionally, I implemented regenerative braking control, increasing the range from 6 miles to 10 miles (measured with a 2-person load).",
     
-    "The project gained unexpected traction when our team revisited it in summer 2025. We created some educational engineering content for Instagram, TikTok, and YouTube about the project that accumulated over 15 million views and growing our following to 40,000 followers (@garage_goblins_ on all platforms). This success drove us to add more technical innovations and improvements to the platform, with seatbelts, turn signals/brake lights, and off-road capabilities being a few. The success of our platform also brought collaborations with established content creators, including Family Friendly and Keys to the Jungle, to promote engineering education and inspire the next generation of makers. Working on this project was truly an unforgettable experience that demonstrated how technical projects can both develop engineering skills and soft skills through explaining communicating complex concepts to broader audiences with social media. Our team is excited to continue to create more projects and videos on our channel in the upcoming summer!"
+    <>The project gained unexpected traction when our team revisited it in summer 2025. We created some educational engineering content for <LinkStyle href="https://www.instagram.com/garage_goblins_">Instagram</LinkStyle>, <LinkStyle href="https://www.tiktok.com/@garage_goblins_">TikTok</LinkStyle>, and <LinkStyle href="https://www.youtube.com/@garage_goblins/shorts">YouTube</LinkStyle> about the project that accumulated over 15 million views and growing our following to 40,000 followers. This success drove us to add more technical innovations and improvements to the platform, with seatbelts, turn signals/brake lights, and off-road capabilities being a few. The success of our platform also brought collaborations with established content creators, including <LinkStyle href="https://youtu.be/7jc4RYlRAsE?si=UPrq0xVc8f3z8pm2">Family Friendly</LinkStyle> and <LinkStyle href="https://www.instagram.com/reel/DN1AQ2GXju4/">Keys to the Jungle</LinkStyle>, to promote engineering education and inspire the next generation of makers. Working on this project was truly an unforgettable experience that demonstrated how technical projects can both develop engineering skills and soft skills through explaining communicating complex concepts to broader audiences with social media. Our team is excited to continue to create more projects and videos on our channel in the upcoming summer!</>
   ];
 
   const mediaItems = [
-    { type: 'image', src: couchStill, alt: 'Motorized Couch', top: '0', height: '180px' },
-    { type: 'image', src: couchSkel, alt: 'Couch Frame', top: '220px', height: '180px' },
-    { type: 'video', src: 'https://www.youtube.com/embed/lW1N-u-RgjY', title: 'Motorized Couch Video', top: '440px', height: '240px' }
+    { type: 'image', src: couchStill, alt: 'Motorized Couch', top: '0', width: '70%', height: 'auto', objectFit: 'contain' },
+    { type: 'image', src: couchSkel, alt: 'Couch Frame', top: '320px', width: '70%', height: 'auto', objectFit: 'contain' },
+    { type: 'video', src: 'https://www.youtube.com/embed/lW1N-u-RgjY', title: 'Motorized Couch Video', top: '620px', width: '70%', height: '200px' }
   ];
 
   return (

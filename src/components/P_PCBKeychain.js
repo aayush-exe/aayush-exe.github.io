@@ -1,7 +1,9 @@
 import React from 'react';
 import { ProjectExpansionBase } from './ProjectExpansionBase';
-// Import your images here when you have them
-// import keychainImg1 from "../assets/img/keychain/image1.jpg";
+import keychainFront from "../assets/img/keychain/keychain-front.jpeg";
+import keychainBack from "../assets/img/keychain/keychain-back.jpeg";
+import pcbImg from "../assets/img/keychain/pcb.png";
+import pcb3d from "../assets/img/keychain/pcb3d.png";
 
 export const PCBKeychain = ({ arrowPosition = 50 }) => {
   const badges = [
@@ -21,10 +23,10 @@ export const PCBKeychain = ({ arrowPosition = 50 }) => {
   ];
 
   const mediaItems = [
-    // Add your images/videos when ready:
-    // { type: 'image', src: keychainImg1, alt: 'PCB Keychain Front', top: '0', height: '180px' },
-    // { type: 'image', src: keychainImg2, alt: 'PCB Keychain Back', top: '220px', height: '180px' },
-    // { type: 'image', src: keychainImg3, alt: 'Keychain Lit Up', top: '440px', height: '180px' }
+    { type: 'image', src: keychainFront, alt: 'PCB Keychain Front', top: '0', left: '0px', width: '40%', height: 'auto', objectFit: 'contain', maxWidth: '250px' },
+    { type: 'image', src: keychainBack, alt: 'PCB Keychain Back', top: '0', left: '30px', width: '40%', height: 'auto', objectFit: 'contain', maxWidth: '250px' },
+    { type: 'image', src: pcbImg, alt: 'PCB Design', top: '280px', left: '10%', width: '40%', height: 'auto', objectFit: 'contain', maxWidth: '250px' },
+    { type: 'image', src: pcb3d, alt: 'PCB 3D View', top: '280px', left: '55%', width: '40%', height: 'auto', objectFit: 'contain', maxWidth: '250px' }
   ];
 
   return (

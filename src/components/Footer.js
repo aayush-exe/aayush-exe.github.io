@@ -11,7 +11,6 @@ export const Footer = () => {
     <footer className="footer">
       <Container>
         <Row className="align-items-center">
-          {/* <MailchimpForm /> */}
           <Col size={12} sm={6}>
             <img src={logo} alt="logo" style={{ width: '200px', height: 'auto' }} />
           </Col>
@@ -45,9 +44,6 @@ export const Footer = () => {
               >
                 <img src={navIcon3} alt="Instagram" style={{ transform: "scale(1.25)" }} />
               </a>
-
-
-
             </div>
           </Col>
         </Row>

@@ -1,6 +1,36 @@
 import React from 'react';
 
 /**
+ * Reusable link style component for consistent styling across all project descriptions
+ * Usage: <LinkStyle href="your-url">Link Text</LinkStyle>
+ */
+export const LinkStyle = ({ href, children }) => (
+  <a 
+    href={href} 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="project-link"
+    style={{ 
+      color: '#4c956c', 
+      textDecoration: 'none', 
+      fontWeight: '600', 
+      borderBottom: '2px solid #4c956c', 
+      transition: 'all 0.2s ease' 
+    }} 
+    onMouseEnter={(e) => { 
+      e.target.style.color = '#2c6e49'; 
+      e.target.style.borderBottomColor = '#2c6e49'; 
+    }} 
+    onMouseLeave={(e) => { 
+      e.target.style.color = '#4c956c'; 
+      e.target.style.borderBottomColor = '#4c956c'; 
+    }}
+  >
+    {children}
+  </a>
+);
+
+/**
  * Base component for project expansion panels
  * Provides standardized structure with customizable content
  */
@@ -96,13 +126,16 @@ export const ProjectExpansionBase = ({
           </div>
         )}
 
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: gridColumns, 
-          gap: '30px', 
-          alignItems: 'start',
-          width: '100%'
-        }}>
+        <div 
+          className="project-expansion-grid"
+          style={{ 
+            display: 'grid', 
+            gridTemplateColumns: gridColumns, 
+            gap: '30px', 
+            alignItems: 'start',
+            width: '100%'
+          }}
+        >
           {/* Left side - Text content */}
           <div style={{ minWidth: 0, width: '100%' }}> 
             {paragraphs.map((text, idx) => (
@@ -124,11 +157,18 @@ export const ProjectExpansionBase = ({
           </div>
 
           {/* Right side - Media collage */}
-          <div style={{ 
-            position: 'relative', 
-            minWidth: 0,
-            minHeight: mediaItems.length > 0 ? '700px' : '0'
-          }}>
+          <div 
+            className="project-media-container"
+            style={{ 
+              position: 'relative', 
+              minWidth: 0,
+              width: '100%',
+              height: 'auto',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'flex-start'
+            }}
+          >
             {mediaItems.map((item, idx) => {
               if (item.type === 'image') {
                 return (
@@ -137,12 +177,15 @@ export const ProjectExpansionBase = ({
                     src={item.src} 
                     alt={item.alt || `Media ${idx + 1}`}
                     style={{
-                      position: 'absolute',
+                      position: item.top !== '0' && item.top ? 'absolute' : 'relative',
                       top: item.top || '0',
-                      left: '0',
-                      width: '100%',
+                      left: item.left || (item.top !== '0' && item.top ? '50%' : 'auto'),
+                      transform: item.left ? 'none' : (item.top !== '0' && item.top ? 'translateX(-50%)' : 'none'),
+                      width: item.width || '100%',
                       height: item.height || '180px',
-                      objectFit: 'cover',
+                      maxWidth: item.maxWidth || 'none',
+                      maxHeight: item.maxHeight || 'none',
+                      objectFit: item.objectFit || 'cover',
                       borderRadius: '12px',
                       border: '3px solid white',
                       boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
@@ -157,8 +200,9 @@ export const ProjectExpansionBase = ({
                     style={{
                       position: 'absolute',
                       top: item.top || '0',
-                      left: '0',
-                      width: '100%',
+                      left: item.left || '50%',
+                      transform: item.left ? 'none' : 'translateX(-50%)',
+                      width: item.width || '100%',
                       height: item.height || '240px',
                       borderRadius: '12px',
                       overflow: 'hidden',

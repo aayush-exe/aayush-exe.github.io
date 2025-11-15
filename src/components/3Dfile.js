@@ -24,33 +24,34 @@ function useGlobalMouse() {
 
 // mouse follower function for given 3d model
 function Follower({ url }) {
+  
   const group = useRef();
-  const bobGroup = useRef();  // for bobbing appearance even w no input
+  const bobGroup = useRef();
   const { scene } = useGLTF(url);
   const mouse = useGlobalMouse();
 
-  // Constants for tuning motion
-  const BOUND_LEFT = .6;   // left boundary
-  const BOUND_RIGHT = .8;  // right boundary
-  const BOUND_TOP = .5;    // top boundary
-  const BOUND_BOTTOM = 1; // bottom boundary
-  const FOLLOW_DAMP = 0.1;  // lower value = chases target slower, less smooth motion
+  // boundary constants
+  const BOUND_LEFT = .6;
+  const BOUND_RIGHT = .8;
+  const BOUND_TOP = .5;
+  const BOUND_BOTTOM = 1;
+  const FOLLOW_DAMP = 0.1;  // lower value = slower follow
 
-  // constants for tuning mouse pos. to model rotation
+  // rotation constants
   const X_ROT = 0.35 * 1;
   const Y_ROT = 0.25 * 1;
 
-  const BOB_AMP_Y = 0.1;  // bobbing amplitude vertical
-  const BOB_AMP_X = 0.0;  // bobbing amplitude horizontal
-  const BOB_SPEED = 1;  // rad/sec
-
+  // bobbing constants
+  const BOB_AMP_Y = 0.1;
+  const BOB_AMP_X = 0.0;
+  const BOB_SPEED = 1;
   useFrame((state) => {
     if (!group.current || !bobGroup.current) return;
 
     const { x, y } = mouse.current;
 
-    // Smooth follow toward mouse-mapped targets
-    const targetX = x * 0.8; // scale sensitivity as you like
+    // sensitivity
+    const targetX = x * 0.8;
     const targetY = y * 0.6;
 
     group.current.position.y -= .01;
@@ -58,18 +59,16 @@ function Follower({ url }) {
     group.current.position.x += (targetX - group.current.position.x) * FOLLOW_DAMP;
     group.current.position.y += (targetY - group.current.position.y) * FOLLOW_DAMP;
 
-    // bound model translation with individual left/right/top/bottom bounds
     group.current.position.x = THREE.MathUtils.clamp(group.current.position.x, -BOUND_LEFT, BOUND_RIGHT);
     group.current.position.y = THREE.MathUtils.clamp(group.current.position.y, -BOUND_BOTTOM, BOUND_TOP);
 
-    // Parallax rotation based on mouse
-    group.current.rotation.y = (x * Math.PI * X_ROT) + (Math.PI/1.2); // offset added to make cow look forward
+    group.current.rotation.y = (x * Math.PI * X_ROT) + (Math.PI/1.2); // rotation offset
     group.current.rotation.x = -y * Math.PI * Y_ROT;
 
     // bobbing function
     const t = state.clock.getElapsedTime();
     bobGroup.current.position.y = Math.sin(t * BOB_SPEED) * BOB_AMP_Y;
-    bobGroup.current.position.x = Math.sin(t * (BOB_SPEED * 0.5)) * BOB_AMP_X; // optional sway
+    bobGroup.current.position.x = Math.sin(t * (BOB_SPEED * 0.5)) * BOB_AMP_X;
   });
 
   return (
@@ -81,13 +80,12 @@ function Follower({ url }) {
   );
 }
 
-// Prevents auto-resizing of 3d movel view on scroll down, only resizes on window resize
+// Only resize on window resize
 function RefitOnResize() {
   const api = useBounds();
   const { size } = useThree();
 
   useEffect(() => {
-    // wait one frame so children are rendered before measuring
     const id = requestAnimationFrame(() => {
       api.refresh().fit();
     });

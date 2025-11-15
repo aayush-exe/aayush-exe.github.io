@@ -898,3 +898,31 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .footer .social-icon a:hover img {
     filter: brightness(0) saturate(100%) invert(15%) sepia(12%) saturate(1287%) hue-rotate(356deg) brightness(96%) contrast(91%);
 }
+
+/************ Project Expansion Responsive Layout ************/
+@media (max-width: 991px) {
+  .project-expansion-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  .project-media-container {
+    min-height: auto !important;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: static !important;
+  }
+  
+  .project-media-container img,
+  .project-media-container > div {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 500px;
+    margin: 0 auto;
+    left: auto !important;
+    top: auto !important;
+  }
+}

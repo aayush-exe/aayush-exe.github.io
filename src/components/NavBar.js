@@ -24,7 +24,7 @@ export const NavBar = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Smooth scroll to section
+  // Smooth scroll
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {

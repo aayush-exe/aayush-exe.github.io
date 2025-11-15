@@ -5,21 +5,20 @@ import { ProjectExpansionBase } from './ProjectExpansionBase';
 
 export const Micromouse = ({ arrowPosition = 50 }) => {
   const badges = [
-    { text: "STM32", variant: "primary" },
+    { text: "STM32 Cube IDE", variant: "primary" },
     { text: "C Programming", variant: "primary" },
-    { text: "KiCAD", variant: "primary" },
     { text: "PCB Design", variant: "primary" },
     { text: "PID Control", variant: "primary" },
-    { text: "IR Sensors", variant: "primary" },
-    { text: "Floodfill Algorithm", variant: "primary" }
+    { text: "Sensor Processing", variant: "primary" },
+    { text: "Embedded System Programming", variant: "primary" }
   ];
 
   const paragraphs = [
-    "During the 2024-2025 academic year, I designed and built a small maze-solving robot from scratch as part of my embedded systems coursework. The Micromouse project challenged me to integrate circuit-level logic, embedded programming, and algorithmic problem-solving to create an autonomous robot capable of dynamically navigating and solving a maze using infrared sensors.",
+    "During the 2024-2025 academic year, I designed and built a small maze-solving robot alongside two other people through UCLA's IEEE club. The Micromouse project challenged me to integrate circuit-level logic, embedded programming, and algorithmic problem-solving to create an autonomous robot capable of navigating and solving a maze completely on its own using infrared sensors. With the help of IEEE's resources and mentorship, we developed a Micromouse that was capable of efficiently mapping and solving multiple maze configurations.",
     
-    "The hardware design was a complete ground-up build. I designed both the schematic and PCB layout for the onboard sensor systems using KiCAD, ensuring proper signal routing, power distribution, and component placement for the compact form factor required by competition standards. The PCB integrated motor drivers, sensor arrays, power management, and the STM32 microcontroller, all while maintaining minimal size and weight constraints.",
+    "The hardware design was created from the ground up. I designed both the schematic and PCB layout for the onboard sensors and motors using KiCAD, ensuring proper signal routing, power distribution, and component placement for the most compact form factor. The PCB integrated motor drivers, sensors, power management, and the STM32 microcontroller, all while maintaining minimal size and weight constraints.",
     
-    "On the software side, I programmed the entire embedded system using STM32 Cube IDE in C. This included implementing a robust PID control system for precise turning and target-following behavior, allowing the robot to maintain consistent wall-following and accurate corner navigation. The maze-solving logic utilized a floodfill algorithm to map unknown mazes efficiently and find the optimal path to the center. The combination of real-time sensor processing, control theory, and algorithmic thinking made this project an excellent exercise in full-stack robotics development."
+    "On the software side, we programmed the onboard STM32 using the STM32 Cube IDE in C. This included using signal processing techniques to analyze the obstacles around the mouse using IR light and implementing a PID control system for precise straight movement and turning on the corners. This allowed the robot to be consistent with wall-following and corner navigation, even in extremely long maze patterns. The maze-solving logic used a floodfill algorithm to map unknown mazes efficiently and find the optimal path to the center. The combination of real-time sensor processing, control theory, and algorithmic thinking made this project an excellent exercise in full-stack robotics development, and it was a great introduction to lower-level programming and the STM32 architecture."
   ];
 
   const mediaItems = [

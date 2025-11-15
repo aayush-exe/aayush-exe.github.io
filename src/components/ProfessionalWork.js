@@ -3,6 +3,12 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import TrackVisibility from "react-on-screen";
 import "animate.css";
 import colorSharp from "../assets/img/color-sharp.png";
+import i2blImg from "../assets/img/professional/i2bl.jpeg";
+import dbfImg from "../assets/img/professional/dbf-ucla.jpeg";
+import mobilityLabImg from "../assets/img/professional/mobility-lab.jpeg";
+import cubesatImg from "../assets/img/professional/cubesat.jpg";
+import roboticsImg from "../assets/img/professional/robotics.jpeg";
+import fabcamp from "../assets/img/professional/fabcamp.jpg";
 
 /* ---------------------------------------
   Professional Project Card Component
@@ -118,16 +124,30 @@ function ProfessionalCard({ title, organization, duration, description, tags, im
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              display: 'inline-block',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
               marginTop: '16px',
+              padding: '8px 16px',
               fontSize: '13px',
-              color: '#4c956c',
+              color: '#fffdf9',
+              background: '#4c956c',
               textDecoration: 'none',
               fontWeight: '600',
-              transition: 'color 0.2s ease'
+              borderRadius: '8px',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 2px 8px rgba(76, 149, 108, 0.2)'
             }}
-            onMouseEnter={(e) => e.currentTarget.style.color = '#2c6e49'}
-            onMouseLeave={(e) => e.currentTarget.style.color = '#4c956c'}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#2c6e49';
+              e.currentTarget.style.transform = 'translateX(4px)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(44, 110, 73, 0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = '#4c956c';
+              e.currentTarget.style.transform = 'translateX(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(76, 149, 108, 0.2)';
+            }}
           >
             Learn More →
           </a>
@@ -150,7 +170,7 @@ export const ProfessionalWork = () => {
       duration: "March 2025 - October 2025",
       description: "Optimized platform performance for varied loads using regression models and data analysis. Co-designed a new PCB testing platform using Altium and LTSpice, quadrupling operational area and achieving 0.1mm positional accuracy for higher ferrofluid loads.",
       tags: ["PCB Design", "PCBA", "Altium Designer", "LTSpice Validation", "Data Analysis", "Research Publication", "C++", "MATLAB"],
-      imgUrl: null,
+      imgUrl: i2blImg,
       link: "https://www.i2bl.org/"
     },
     {
@@ -159,26 +179,26 @@ export const ProfessionalWork = () => {
       duration: "Sep. 2024 - Present",
       description: "Designed GNC navigation system using GPS, PID control, and LiDAR sensors for autonomous glider landing. Created CAD models and ran FEA/CFD simulations in Ansys to validate structural integrity under stressful flight conditions. Designed a PCB for onboard electronics integrating sensors and flight controllers.",
       tags: ["GNC Systems", "Ansys", "FEA", "CFD", "SolidWorks", "CAD", "PID Control", "PCB Design", "Altium Designer"],
-      imgUrl: null,
+      imgUrl: dbfImg,
       link: "https://www.dbfucla.com/"
     },
     {
       title: "Autonomous Vehicle Research & Development",
       organization: "Mobility Lab at UCLA",
       duration: "March 2025 - Present",
-      description: "Contributing to cutting-edge mobility research projects focused on advanced transportation systems and autonomous vehicle technologies. Working with interdisciplinary teams to develop innovative solutions for urban mobility challenges.",
-      tags: ["Mobility Research", "Autonomous Systems", "V2X Systems", "LiDAR", "Data Annotation"],
-      imgUrl: null,
+      description: "Annotated and synchronized large-scale 3D point cloud and sensor data, creating ground-truth datasets for training proprietary true perception autonomous driving models. Contributed to the optimization and testing of QuantV2X, a PyTorch-based autonomous vehicle framework designed to reduce latency in V2X (Vehicle-to-Everything) cooperative perception scenarios. Utilized Python and PyTorch to test the quantization of a full-perception model, analyzing performance losses across parameter variations to optimize processing and transmission latency.",
+      tags: ["Python", "PyTorch", "3D Point Cloud Processing", "V2X Systems", "Autonomous Driving", "Data Annotation", "Model Quantization", "Sensor Fusion"],
+      imgUrl: mobilityLabImg,
       link: "https://mobility-lab.seas.ucla.edu/"
     },
     {
-      title: "Aerospace Financial Management",
-      organization: "AIAA at UCLA",
-      duration: "April 2025 - Present",
-      description: "Financial Officer managing funds for four aerospace student organizations across UCLA. Secured funding through grants and sponsorships supporting 300+ members. Implemented financial tracking systems to optimize budgets across multiple aerospace projects while ensuring university policy compliance.",
-      tags: ["Financial Management", "Leadership", "Grant Writing", "Budget Planning", "AIAA"],
-      imgUrl: null,
-      link: "http://aiaa.seas.ucla.edu/"
+      title: "FabCamp Camp Counselor",
+      organization: "UCI Samueli School of Engineering",
+      duration: "June 2023 - August 2023 (90+ Hours)",
+      description: "Collaborated with the OC STEM initiative under CLAOC as a key member of the FabCamp Intern team, mentoring middle schoolers in fabrication technologies. Assisted students in mastering comprehensive curriculum on manufacturing and fabrication techniques through hands-on projects. Facilitated enriching discussions and fostered a conducive learning environment while addressing student queries effectively.",
+      tags: ["Manufacturing Techniques", "Fabrication Processes", "Education", "STEM Outreach"],
+      imgUrl: fabcamp,
+      link: "https://sites.uci.edu/fabcamp/"
     },
     {
       title: "Satellite Avionics Engineering",
@@ -186,7 +206,7 @@ export const ProfessionalWork = () => {
       duration: "2023 - 2024",
       description: "Led avionics division in designing and building avionics systems for a CubeSat satellite from scratch. Developed a custom star-tracking algorithm for positioning data and integrated GPS and communication subsystems to ensure reliable operation in low Earth orbit.",
       tags: ["CubeSat", "Satellite Avionics", "Embedded Systems Programming", "Signal Processing", "Image Processing"],
-      imgUrl: null,
+      imgUrl: cubesatImg,
       link: null
     },
     {
@@ -195,7 +215,7 @@ export const ProfessionalWork = () => {
       duration: "Aug. 2020 - May 2024",
       description: "Lead Programmer & Driver for 8-person team. Qualified for World Championships 4 consecutive years and secured 25 tournament awards. Spearheaded design, programming, and operation of 3 major robot iterations annually. Mentored 80+ junior engineers and volunteered at 15 regional tournaments.",
       tags: ["Robotics", "C++", "Competition", "Leadership", "Mentorship", "CAD"],
-      imgUrl: null,
+      imgUrl: roboticsImg,
       link: null
     }
   ];

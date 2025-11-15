@@ -3,11 +3,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import Header3D from './3Dfile.js'
 import 'animate.css';
 
+// char typing effect vars
 const toRotate = [ "Electrical Engineer", "Coder", "Builder", "UCLA Student"];
-const TYPE_SPEED = 30;   // ms per char (typing)
-const DELETE_SPEED = 18; // ms per char (deleting)
-const HOLD_FULL = 2000;   // pause when word complete
-const HOLD_EMPTY = 200;  // pause when word cleared
+const TYPE_SPEED = 30;
+const DELETE_SPEED = 18;
+const HOLD_FULL = 2000;
+const HOLD_EMPTY = 200;
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -25,7 +26,6 @@ export const Banner = () => {
 
     setText(next);
 
-    // set next delay based on state
     if (!isDeleting && next === fullText) {
       setIsDeleting(true);
       setDelta(HOLD_FULL);
@@ -41,7 +41,7 @@ export const Banner = () => {
   useEffect(() => {
     const timer = setTimeout(() => tick(), delta);
     return () => clearTimeout(timer);
-  }, [text, delta, tick]); // include tick in dependencies
+  }, [text, delta, tick]);
 
 
   return (
@@ -72,24 +72,20 @@ export const Banner = () => {
         </Row>
       </Container>
       <style>{`
-        /* Make sure the animated wrapper doesn't clip children */
         .animate__zoomIn, .animate__fadeIn {
           overflow: visible;
         }
 
-        /* Optional: if your .banner or column sets overflow hidden somewhere */
         .banner, .banner .col, .banner .row {
           overflow: visible;
         }
 
-        /* The canvas wrapper already sets height in JS, but you can move it here if you prefer */
         .r3f-wrap {
           width: 100%;
           height: 60vh;    /* big hero presence */
           min-height: 420px;
         }
 
-        /* Ensure the canvas fills the wrapper (r3f handles this, but this is safe) */
         .r3f-wrap > canvas {
           width: 100% !important;
           height: 100% !important;
@@ -102,7 +98,7 @@ export const Banner = () => {
         }
 
         .r3f-wrap {
-          overflow: visible; /* ensure the 3D isn't cropped by parent */
+          overflow: visible;
         }
           .banner,
         .banner * {
@@ -110,7 +106,7 @@ export const Banner = () => {
         }
 
         .r3f-wrap {
-          overflow: visible; /* ensure the 3D isn't cropped by parent */
+          overflow: visible;
         }
 
 

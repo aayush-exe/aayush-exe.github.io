@@ -5,14 +5,20 @@ import { DrivableCouch } from "./P_DrivableCouch";
 import { Micromouse } from "./P_Micromouse";
 import { PCBKeychain } from "./P_PCBKeychain";
 import { DoorBot } from "./P_DoorBot";
+import { PolyVoice } from "./P_PolyVoice";
+import { TustinCode } from "./P_TustinCode";
+import { GoatCode } from "./P_GoatCode";
 import "animate.css";
 
 import couchCover from "../assets/img/couch/couch_cover.jpeg";
+import pcbCover from "../assets/img/keychain/keychain-cover.jpg";
+import mmCover from "../assets/img/micromouse/mm-cover.png";
+import websiteCover from "../assets/img/website/tustincode-cover.jpg";
+import pvCover from "../assets/img/polyvoice/pv-cover.jpeg";
+import dbotCover from "../assets/img/doorbot/doorbot-cover.jpg";
 import colorSharp2 from "../assets/img/color-sharp2.png";
+import goatCover from "../assets/img/goatcode/goatcode-cover.jpg";
 
-/* ---------------------------------------
-  Project Card Component
-----------------------------------------*/
 function ProjectCard({ title, imgUrl, onClick }) {
   return (
     <div
@@ -37,20 +43,17 @@ function ProjectCard({ title, imgUrl, onClick }) {
   );
 }
 
-/* ---------------------------------------
-  Main Component
-----------------------------------------*/
 export const Projects = () => {
   const projects = [
     { title: "Motorized Couch", description: "the future of transportation", imgUrl: couchCover },
-    { title: "Micromouse Robot", description: "autonomous maze-solving robot", imgUrl: couchCover },
-    { title: "PCB Keychain", description: "custom LED keychain design", imgUrl: couchCover },
-    { title: "DoorBot", description: "smart doorbell system", imgUrl: couchCover },
+    { title: "Micromouse Robot", description: "autonomous maze-solving robot", imgUrl: mmCover },
+    { title: "PCB Keychain", description: "custom LED keychain design", imgUrl: pcbCover },
+    { title: "DoorBot", description: "smart doorbell system", imgUrl: dbotCover },
     { title: "Automated TikTok Video Maker", description: "finally, automatic brainrot", imgUrl: couchCover },
-    { title: "tustincode.com Website", description: "Curriculum for Tustin USD", imgUrl: couchCover },
-    { title: "GoatCode", description: "become the goat of coding", imgUrl: couchCover },
-    { title: "PolyVoice (hackathon project)", description: "live voice translator for gaming\n1st Place @HackOC — $5,000", imgUrl: couchCover },
-    { title: "Misaki's Kitchen (hackathon project)", description: "anime-themed recipe book\nBest Design & 3rd @Hack The Wave — $500", imgUrl: couchCover },
+    { title: "tustincode.com Website", description: "Curriculum for Tustin USD", imgUrl: websiteCover },
+    { title: "GoatCode", description: "become the goat of coding", imgUrl: goatCover },
+    { title: "PolyVoice", description: "live voice translator for gaming\n1st Place @HackOC — $5,000", imgUrl: pvCover },
+    // { title: "Misaki's Kitchen (hackathon project)", description: "anime-themed recipe book\nBest Design & 3rd @Hack The Wave — $500", imgUrl: couchCover },
   ];
 
   const [hasAnimated, setHasAnimated] = React.useState(false);
@@ -60,9 +63,9 @@ export const Projects = () => {
   const [arrowPosition, setArrowPosition] = React.useState(50);
   const cardRefs = React.useRef([]);
   const containerRef = React.useRef(null);
-  const lastRenderedContent = React.useRef({});  // Track content per row
+  const lastRenderedContent = React.useRef({});
 
-  // Detect columns per row based on screen size
+  // column num based on screen size
   React.useEffect(() => {
     const updateColumns = () => {
       const width = window.innerWidth;
@@ -78,20 +81,16 @@ export const Projects = () => {
 
   const handleCardClick = (idx) => {
     if (openIdx === idx) {
-      // Clicking the same card - just close it
       setPrevOpenIdx(openIdx);
       setOpenIdx(null);
     } else if (openIdx !== null) {
-      // Another card is open - close it first, then open the new one
       setPrevOpenIdx(openIdx);
       setOpenIdx(null);
-      
-      // Wait for closing animation to complete (350ms) before opening new card
-      setTimeout(() => {
+            setTimeout(() => {
         setPrevOpenIdx(null);
         setOpenIdx(idx);
         
-        // Calculate arrow position for new card
+        // calculate arrow position
         setTimeout(() => {
           if (cardRefs.current[idx] && containerRef.current) {
             const cardRect = cardRefs.current[idx].getBoundingClientRect();
@@ -104,11 +103,10 @@ export const Projects = () => {
         }, 0);
       }, 350);
     } else {
-      // No card is open - open the clicked card immediately
       setPrevOpenIdx(openIdx);
       setOpenIdx(idx);
       
-      // Calculate arrow position after state update
+      // calculate arrow pos
       setTimeout(() => {
         if (cardRefs.current[idx] && containerRef.current) {
           const cardRect = cardRefs.current[idx].getBoundingClientRect();
@@ -122,13 +120,11 @@ export const Projects = () => {
     }
   };
 
-  // Calculate which items to render and where to insert expansion
   const renderItems = () => {
     const items = [];
     const rows = Math.ceil(projects.length / columnsPerRow);
     
     for (let row = 0; row < rows; row++) {
-      // Add cards for this row
       for (let col = 0; col < columnsPerRow; col++) {
         const idx = row * columnsPerRow + col;
         if (idx < projects.length) {
@@ -143,33 +139,31 @@ export const Projects = () => {
         }
       }
       
-      // Add expansion slot after each row
       const openRow = openIdx !== null ? Math.floor(openIdx / columnsPerRow) : -1;
       const prevRow = prevOpenIdx !== null ? Math.floor(prevOpenIdx / columnsPerRow) : -1;
       const shouldShow = openRow === row;
       
-      // Determine which component to render based on the card in this row
       const getContentForRow = () => {
         const firstCardInRow = row * columnsPerRow;
         const lastCardInRow = Math.min(firstCardInRow + columnsPerRow - 1, projects.length - 1);
         
-        // Function to get component by index
         const getComponentByIdx = (idx) => {
           if (idx === 0) return <DrivableCouch arrowPosition={arrowPosition} />;
           if (idx === 1) return <Micromouse arrowPosition={arrowPosition} />;
           if (idx === 2) return <PCBKeychain arrowPosition={arrowPosition} />;
           if (idx === 3) return <DoorBot arrowPosition={arrowPosition} />;
+          if (idx === 5) return <TustinCode arrowPosition={arrowPosition} />;
+          if (idx === 6) return <GoatCode arrowPosition={arrowPosition} />;
+          if (idx === 7) return <PolyVoice arrowPosition={arrowPosition} />;
           return null;
         };
         
-        // Check if openIdx is in this row's range
         if (openIdx !== null && openIdx >= firstCardInRow && openIdx <= lastCardInRow) {
           const content = getComponentByIdx(openIdx);
-          lastRenderedContent.current[row] = content;  // Store for closing animation
+          lastRenderedContent.current[row] = content;
           return content;
         }
         
-        // When closing, use the last rendered content for this row
         if (openIdx === null && prevRow === row && lastRenderedContent.current[row]) {
           return lastRenderedContent.current[row];
         }

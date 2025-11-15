@@ -2,10 +2,10 @@
 import 'react-multi-carousel/lib/styles.css';
 
 import React from 'react';
-import img4 from "../assets/img/about-me/nature.JPG";
+import img4 from "../assets/img/about-me/nature.jpeg";
 import img2 from "../assets/img/about-me/sky.jpeg";
-import img3 from "../assets/img/about-me/drink.JPG";
-import img1 from "../assets/img/about-me/city.JPEG";
+import img3 from "../assets/img/about-me/drink.jpeg";
+import img1 from "../assets/img/about-me/city.jpeg";
 import img5 from "../assets/img/about-me/seaside.jpeg";
 
 export const AboutMe = () => {
@@ -17,8 +17,9 @@ export const AboutMe = () => {
                     <h2>About Me</h2>
                     <div className="row align-items-center">
                     <div className="col-md-6">
-                        <p>TODO TODO TODO I've had an interest in engineering ever since I worked on robotics projects in high school. At UCLA, I developed GNC systems for aircraft as well as control methods through innovative PCB design in a research setting, strengthening my passion for autonomous control systems. </p>
-                        <p>On the weekends, you can find me café-hopping in LA, exploring a new hike, or spending some time on the beach.</p>
+                        <p>My journey in engineering began when I joined my school's robotics team, and I immediately fell in love with the challenge of bringing mechanical systems to life through code. Throughout high school, I competed in robotics competitions and learned the fundamentals of building and programming robots. Software development in the context of robotics sparked my interest for coding, which led me to explore control systems and software optimization.</p>
+                        <p>At UCLA, I've explored more electrical engineering concepts, and I'm particularly interested in embedded systems and computer vision projects. I've been fortunate to work on diverse engineering projects through research labs and student project teams, ranging from designing GNC navigation systems for autonomous aircraft to developing innovative PCB platforms for bioelectronics research. These experiences have strengthened my passion for autonomous systems and taught me how different engineering disciplines come together to solve complex problems.</p>
+                        <p>Outside of work, I enjoy exploring LA by café-hopping around the city to find the best coffee spots, discovering new hiking trails, or spending time at the beach. I also love cooking and baking, and when I'm not in the lab or outdoors, you can find me working on some side projects.</p>
                     </div>
                     <div className="col-md-6">
                         <div className="image-collage">

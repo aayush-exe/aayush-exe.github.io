@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.436b335e.css",
-    "main.js": "/static/js/main.e811959a.js",
+    "main.js": "/static/js/main.c67dfe86.js",
     "static/js/206.8b008da2.chunk.js": "/static/js/206.8b008da2.chunk.js",
     "static/media/HackocW.jpg": "/static/media/HackocW.e4ae689a190b0edf865c.jpg",
     "static/media/ss2.png": "/static/media/ss2.54f4aa591ad116ae8e0e.png",
@@ -18,7 +18,7 @@
     "static/media/mobility-lab.jpeg": "/static/media/mobility-lab.6918659e9da2eece9034.jpeg",
     "static/media/ss4.png": "/static/media/ss4.70bc3b446feebe256781.png",
     "static/media/ss3.png": "/static/media/ss3.e9daca131ffae1f3ebf9.png",
-    "static/media/city.jpeg": "/static/media/city.e6dbb4672eaaa7389c1f.jpeg",
+    "static/media/city.JPEG": "/static/media/city.e6dbb4672eaaa7389c1f.JPEG",
     "static/media/i2bl.jpeg": "/static/media/i2bl.0332c56d1205282394e9.jpeg",
     "static/media/sky.jpeg": "/static/media/sky.b1fbc4a0b943f2763249.jpeg",
     "static/media/flowchart.png": "/static/media/flowchart.54b5128ed959376e4011.png",
@@ -56,6 +56,6 @@
   },
   "entrypoints": [
     "static/css/main.436b335e.css",
-    "static/js/main.e811959a.js"
+    "static/js/main.c67dfe86.js"
   ]
 }
